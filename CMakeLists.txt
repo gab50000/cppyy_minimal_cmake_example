@@ -13,3 +13,12 @@ message("modules path:" ${CMAKE_MODULE_PATH})
 find_package(Cppyy)
 
 add_library(mylib SHARED src/mylib.cpp src/mylib.hpp)
+
+cppyy_add_bindings(
+    mylibbindings
+    "0.0.1"
+    "Gabriel Kabbe"
+    "gabriel.kabbe@mail.de"
+    LINK_LIBRARIES mylib
+    H_FILES src/mylib.hpp
+)
