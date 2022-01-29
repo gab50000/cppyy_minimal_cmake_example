@@ -7,6 +7,9 @@ project(
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
 find_package(Python3 COMPONENTS Interpreter)
-message("Found:" ${Python3_SITELIB})
+set(CPPYY_MODULE_PATH "${Python3_SITELIB}/cppyy_backend/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CPPYY_MODULE_PATH}")
+message("modules path:" ${CMAKE_MODULE_PATH})
+find_package(Cppyy)
 
 add_library(mylib SHARED src/mylib.cpp src/mylib.hpp)
